@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mon application ASP.NET</title
+>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Cinema", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Gestion", "Index", "Cinema")</li>
+                    <li>@Html.ActionLink("À propos de", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+ 
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+<script type="text/javascript">
+    $(".datePicker").datepicker({ dateFormat: 'yy-mm-dd' });
+
+    function BBConfirm(message, href) {
+        bootbox.confirm({
+            title: ' <img src="@Url.Content("~/Images/UI/important.png")" style="width:30px;" /> <b>Attention!<b/>',
+            message: message,
+            buttons: {
+                'cancel': {
+                    label: 'Annuler',
+                    className: 'btn-default pull-left'
+                },
+                'confirm': {
+                    label: 'Procéder',
+                    className: 'btn-primary pull-right'
+                }
+            },
+            callback: function (result) {
+                if (result) {
+                    window.location = href;
+                }
+            }
+        });
+    }
+    function PreLoadImage(e) {
+        var imageTarget = document.getElementById("new_image");
+        var input = document.getElementById("FU_Image");
+
+        if (imageTarget != null) {
+            var len = input.value.length;
+
+            if (len != 0) {
+                var fname = input.value;
+                var ext = fname.substr(len - 3, len).toLowerCase();
+
+                if ((ext != "png") &&
+                    (ext != "jpg") &&
+                    (ext != "bmp") &&
+                    (ext != "gif")) {
+                    bootbox.alert("Ce n'est pas un fichier d'image de format reconnu. Sélectionnez un autre fichier.");
+                }
+                else {
+                    var fReader = new FileReader();
+                    fReader.readAsDataURL(input.files[0]);
+                    fReader.onloadend = function (event) {
+                        // the event.target.result contains the image data 
+                        imageTarget.src = event.target.result;
+                    }
+                }
+            }
+            else {
+                imageTarget.src = null;
+            }
+        }
+        return true;
+    }
+</script>
+

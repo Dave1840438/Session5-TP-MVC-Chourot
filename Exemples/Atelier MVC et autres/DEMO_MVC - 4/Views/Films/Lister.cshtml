@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Cinema.Film>
+
+<h2>Films</h2>
+
+<p>
+    <a href='@Url.Action("Ajouter", "Films")' style="text-decoration:none">
+        <img src='@Url.Content("~/Images/UI/Add.png")'
+             alt="Ajouter" class="CMD_Icon_3"
+             data-toggle="tooltip"
+             title="Ajouter un film" />
+    </a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            <a href='@Url.Action("Sort", "Films",new {sortBy = "Titre"})' style="text-decoration:none">
+                <img src='@Url.Content("~/Images/UI/Sort.png")'
+                     alt="Ajouter" class="CMD_Icon_4"
+                     data-toggle="tooltip"
+                     title="Trier par Titre" />
+            </a>
+             
+            @Html.DisplayNameFor(model => model.Titre)
+        </th>
+        <th>
+            <a href='@Url.Action("Sort", "Films", new { sortBy = "Parution" })' style="text-decoration:none">
+                <img src='@Url.Content("~/Images/UI/Sort.png")'
+                     alt="Ajouter" class="CMD_Icon_4"
+                     data-toggle="tooltip"
+                     title="Trier par Date de parution" />
+            </a>
+
+           @Html.DisplayNameFor(model => model.Parution)
+        </th>
+        <th>
+            <a href='@Url.Action("Sort", "Films", new { sortBy = "Genre" })' style="text-decoration:none">
+                <img src='@Url.Content("~/Images/UI/Sort.png")'
+                     alt="Ajouter" class="CMD_Icon_4"
+                     data-toggle="tooltip"
+                     title="Trier par Genre" />
+            </a>
+
+           @Html.DisplayNameFor(model => model.Genre)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Parution)
+            </td>
+            <td>
+                @item.Genre.ToString()
+            </td>
+            <td>
+                <a href='@Url.Action("Details", "Films", new { id = item.Id })' style="text-decoration:none">
+                    <img src='@Url.Content("~/Images/UI/Details.png")'
+                         alt="Détails" class="CMD_Icon_3"
+                         data-toggle="tooltip"
+                         title="Voir les détails du film [@item.Titre]" />
+                </a> &nbsp;
+
+                <a href='@Url.Action("Editer", "Films", new { id = item.Id })' style="text-decoration:none">
+                    <img src='@Url.Content("~/Images/UI/Edit.png")'
+                         alt="Editer" class="CMD_Icon_3"
+                         data-toggle="tooltip"
+                         title="Éditer le film [@item.Titre]" />
+                </a> &nbsp;
+
+                <img src='@Url.Content("~/Images/UI/Delete.png")'
+                     alt="Delete" class="CMD_Icon_3"
+                     onclick="BBConfirm('Effacer le film [@item.Titre.Replace(" '", @"\' ")]?', '@Url.Action("Effacer", "Films", new { id = item.Id })')"
+                     data-toggle="tooltip"
+                     title="Effacer le film [@item.Titre]" />
+            </td>
+        </tr>
+    }
+
+</table>

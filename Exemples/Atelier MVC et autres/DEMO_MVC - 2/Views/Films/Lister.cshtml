@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Cinema.Film>
+
+<h2>Films</h2>
+
+<p>
+    @Html.ActionLink("Ajouter", "Ajouter")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parution)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parution)
+        </td>
+        <td>
+            @item.Genre.ToString()
+        </td>
+        <td>
+            @Html.ActionLink("Éditer", "Editer", new { id=item.Id }) |
+            @Html.ActionLink("Détails", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Effacer", "Effacer", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

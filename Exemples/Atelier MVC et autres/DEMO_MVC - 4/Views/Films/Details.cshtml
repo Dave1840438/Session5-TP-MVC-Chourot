@@ -1,0 +1,49 @@
+﻿@model Cinema.Film
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h3>@Html.DisplayFor(model => model.Titre)</h3>
+	<hr />
+
+    <table>
+        <tr>
+            <td>
+                <img id="new_image" src="@Url.Content("~" + Model.GetPosterURL())" class="poster" />
+            </td>
+            <td>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Parution)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Parution)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+
+                    <dd>
+                        <textarea rows="15" cols="50">@Model.Description</textarea>                     
+                    </dd>
+                </dl>              
+            </td>
+        </tr>
+    </table>
+</div>
+<p>
+    <a href='@Url.Action("Editer", "Films", new { id = Model.Id })' style="text-decoration:none">
+        <img src='@Url.Content("~/Images/UI/Edit.png")'
+             alt="Editer" class="CMD_Icon_3"
+             data-toggle="tooltip"
+             title="Éditer le film [@Model.Titre]" />
+    </a> &nbsp;
+ |
+    @Html.ActionLink("Retour", "Lister")
+</p>

@@ -1,0 +1,85 @@
+﻿@model Cinema.Film
+
+@{
+    ViewBag.Title = "Ajouter";
+}
+
+<h2>Ajouter</h2>
+
+@using (Html.BeginForm("Ajouter",
+                        "Films",
+                        FormMethod.Post,
+                        new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Film</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Titre, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Titre)
+                @Html.ValidationMessageFor(model => model.Titre)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Parution, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Parution, new { @class = "datePicker" })
+                @Html.ValidationMessageFor(model => model.Parution)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Genre, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="Genre" id="genre">
+                    @{
+                        int index = 0;
+                        foreach(Cinema.Genre genre in Enum.GetValues(typeof(Cinema.Genre)))
+                        {
+                            if ((Model != null) && ((int) Model.Genre == index) )
+                                {<option value="@index" selected>@genre.ToString()</option>}
+                            else 
+                                {<option value="@index">@genre.ToString()</option>}
+                            index++;
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Description, 8, 80, null)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Poster_Id, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <img id="new_image" src="@Url.Content("~" + Model.GetPosterURL())" class="poster" />
+                <input type="file" name="FU_Image" id="FU_Image" style="display:none;" onchange="PreLoadImage();" />
+                <br />
+                <input type="button" class="AvatarBrowseButton" id="uploadTrigger" onclick="document.getElementById('FU_Image').click();" value="Choisir l'Affiche..." />
+
+          </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Soumettre" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Retour", "Lister")
+</div>

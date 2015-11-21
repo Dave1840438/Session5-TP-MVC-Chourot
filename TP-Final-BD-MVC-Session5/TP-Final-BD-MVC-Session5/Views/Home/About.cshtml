@@ -1,0 +1,23 @@
+﻿@model  TP_Final_BD_MVC_Session5.ViewModels.ESportViewModel
+
+@{
+    ViewBag.Title = "About";
+}
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+@using (Html.BeginForm("About", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.LabelFor(model => Model.Nom); 
+    @Html.TextBoxFor(model => Model.Nom);
+    <br />
+    @Html.TextBoxFor(model => Model.DateCreation, new { Type = "Date" });
+
+    @Html.TextBoxFor(model => Model.Logo, new { type = "file" })
+    
+    <input type="submit" value="Inserer" />
+}
+
+
+<p>Use this area to provide additional information.</p>
