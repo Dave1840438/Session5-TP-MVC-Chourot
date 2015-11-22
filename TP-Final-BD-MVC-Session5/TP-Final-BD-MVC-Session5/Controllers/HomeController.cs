@@ -10,7 +10,7 @@ namespace TP_Final_BD_MVC_Session5.Controllers
 {
     public class HomeController : Controller
     {
-        public const string ConnectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\Users\\Dave\\Desktop\\Session5-TP-MVC-Chourot\\TP-Final-BD-MVC-Session5\\App_Data\\MainDB.mdf;Integrated Security=True;Connect Timeout=10";
+        public const string ConnectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\Users\\Dominic\\Desktop\\Session5-TP-MVC-Chourot\\TP-Final-BD-MVC-Session5\\App_Data\\MainDB.mdf;Integrated Security=True;Connect Timeout=10";
 
         public ActionResult Index()
         {

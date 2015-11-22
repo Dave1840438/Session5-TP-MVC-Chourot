@@ -40,3 +40,51 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+.panel-footer {
+    padding: 10px 15px;
+    background-color: #000000;
+    border-top: 1px solid #dddddd;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.panel {
+    margin-bottom: 20px;
+    background-color: #000000;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.panel-default {
+    border-color: #6B6B6B;
+}
+
+.panel-default > .panel-heading {
+    color: #FFFFFF;
+    background-color: #000000;
+    border-color: #dddddd;
+}
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #000000;
+    border: 1px solid #dddddd;
+    color: #fff;
+}
+.btn-default {
+    color: #FFFFFF;
+    background-color: #383838;
+    border-color: #777777;
+}
+
+.custab {
+    border: 1px solid #FFF9F9;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #000;
+    transition: 0.5s;
+}
