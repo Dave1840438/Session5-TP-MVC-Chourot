@@ -228,7 +228,7 @@ namespace SqlExpressUtilities
                 Next();
             else
                 EndQuerySQL();
-            return reader.HasRows;
+            return hadRow;
         }
 
         // Extraire l'enregistrement d'id ID

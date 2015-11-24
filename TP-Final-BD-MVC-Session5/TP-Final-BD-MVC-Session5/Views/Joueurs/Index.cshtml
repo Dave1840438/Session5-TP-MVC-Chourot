@@ -1,4 +1,4 @@
-﻿@model  TP_Final_BD_MVC_Session5.Models.Esports
+﻿@model  TP_Final_BD_MVC_Session5.Models.Joueurs
 
 @{
     ViewBag.Title = "Contact";
@@ -9,16 +9,16 @@
         do
         {
             <br />
-            @Model.Nom.ToString();
+            @Model.NomComplet.ToString();
         <br />
-        @Model.DateCreation.ToLongDateString();
+        @Model.DateNaissance.ToLongDateString();
         <br />
 
-        <img src="~/Images/@Model.Logo.ToString()" />
+        <img src="~/Images/@Model.Photo.ToString()" />
         <br />
-        @Html.ActionLink("Supprimer", "Contact", "Home", new { idToDelete = @Model.Id }, new { });
+        @Html.ActionLink("Supprimer", "Index", "Joueurs", new { idToDelete = @Model.Id }, new { });
         <br />
-        @Html.ActionLink("Modifier", "UpdateESport", "Home", new { idToUpdate = @Model.Id }, new { });
+        @Html.ActionLink("Modifier", "UpdateJoueur", "Joueurs", new { idToUpdate = @Model.Id }, new { });
         <br />
 
         } while (Model.Next());

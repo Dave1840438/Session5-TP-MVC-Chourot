@@ -1,0 +1,28 @@
+﻿@model  TP_Final_BD_MVC_Session5.Models.Joueurs
+
+@{
+    ViewBag.Title = "About";
+}
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+@using (Html.BeginForm("Insert", "Joueurs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.LabelFor(model => Model.NomComplet); 
+    @Html.TextBoxFor(model => Model.NomComplet);
+    @Html.ValidationMessageFor(model => Model.NomComplet)
+    <br />
+    @Html.LabelFor(model => Model.DateNaissance); 
+    @Html.TextBoxFor(model => Model.DateNaissance, new { Type = "Date" });
+    @Html.ValidationMessageFor(model => Model.DateNaissance)
+    <br />
+    @Html.LabelFor(model => Model.Photo); 
+    @Html.TextBoxFor(model => Model.Photo, new { type = "file", accept = "image/png" })
+    @Html.ValidationMessageFor(model => Model.Photo)
+    <br />
+    <input type="submit" value="Créer l'équipe" />
+}
+
+
+<p>Use this area to provide additional information.</p>

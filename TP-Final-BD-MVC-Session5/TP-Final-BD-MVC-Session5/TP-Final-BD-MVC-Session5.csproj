@@ -109,19 +109,30 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Interface\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ConstantsAndHelpers.cs" />
+    <Compile Include="Controllers\CompositionsEquipesController.cs" />
+    <Compile Include="Controllers\ESportsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InterfaceController.cs" />
+    <Compile Include="Controllers\JoueursController.cs" />
+    <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CompositionsEquipes.cs" />
     <Compile Include="Models\Esports.cs" />
+    <Compile Include="Models\Joueurs.cs" />
+    <Compile Include="Models\Teams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlExpressUtilities.cs" />
-    <Compile Include="ViewModels\ESportViewModel.cs" />
+    <Compile Include="ViewModels\CompositionsEquipesViewModel.cs" />
+    <Compile Include="ViewModels\TeamsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -155,6 +166,20 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Teams.cshtml" />
+    <Content Include="Views\Home\UpdateESport.cshtml" />
+    <Content Include="Views\ESports\Insert.cshtml" />
+    <Content Include="Views\ESports\Index.cshtml" />
+    <Content Include="Views\ESports\Teams.cshtml" />
+    <Content Include="Views\ESports\UpdateESport.cshtml" />
+    <Content Include="Views\Teams\UpdateTeam.cshtml" />
+    <Content Include="Views\Teams\Index.cshtml" />
+    <Content Include="Views\Teams\Insert.cshtml" />
+    <Content Include="Views\Joueurs\Index.cshtml" />
+    <Content Include="Views\Joueurs\Insert.cshtml" />
+    <Content Include="Views\Joueurs\UpdateJoueur.cshtml" />
+    <Content Include="Views\CompositionsEquipes\Index.cshtml" />
+    <Content Include="Views\CompositionsEquipes\Insert.cshtml" />
+    <Content Include="Views\CompositionsEquipes\UpdateCompositionsEquipes.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

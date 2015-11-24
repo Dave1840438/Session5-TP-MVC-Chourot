@@ -1,0 +1,51 @@
+﻿@model  TP_Final_BD_MVC_Session5.Models.Teams
+
+@{
+    ViewBag.Title = "About";
+}
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+@using (Html.BeginForm("Insert", "Teams", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.LabelFor(model => Model.NomEquipe); 
+    @Html.TextBoxFor(model => Model.NomEquipe);
+    @Html.ValidationMessageFor(model => Model.NomEquipe)
+    <br />
+    @Html.LabelFor(model => Model.IdSport);
+
+    <select name="IdSport">
+
+    @{
+    TP_Final_BD_MVC_Session5.Models.Esports allEsports = new TP_Final_BD_MVC_Session5.Models.Esports();
+
+    if (allEsports.SelectAll())
+    {
+        do
+        {
+            <option value="@allEsports.Id">@allEsports.Nom</option>
+        } while (allEsports.Next());
+     }
+
+     }
+
+    </select>
+
+    @Html.ValidationMessageFor(model => Model.IdSport)
+    <br />
+    
+    @Html.LabelFor(model => Model.Classement); 
+    @Html.TextBoxFor(model => Model.Classement, new { type="number", min = "1", max = "9999" });
+    @Html.ValidationMessageFor(model => Model.Classement)
+    <br />
+    
+    @Html.LabelFor(model => Model.LogoEquipe); 
+    @Html.TextBoxFor(model => Model.LogoEquipe, new { type = "file", accept="image/png"  })
+    @Html.ValidationMessageFor(model => Model.LogoEquipe)
+    <br />
+    <input type="submit" value="Créer l'équipe" />
+}
+
+
+<p>Use this area to provide additional information.</p>

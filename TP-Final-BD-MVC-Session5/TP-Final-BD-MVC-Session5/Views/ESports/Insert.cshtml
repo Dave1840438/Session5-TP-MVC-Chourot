@@ -7,7 +7,7 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-@using (Html.BeginForm("About", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Insert", "ESports", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.LabelFor(model => Model.Nom); 
     @Html.TextBoxFor(model => Model.Nom);
@@ -18,7 +18,7 @@
     @Html.ValidationMessageFor(model => Model.DateCreation)
     <br />
     @Html.LabelFor(model => Model.Logo); 
-    @Html.TextBoxFor(model => Model.Logo, new { type = "file" })
+    @Html.TextBoxFor(model => Model.Logo, new { type = "file", accept="image/png" })
     @Html.ValidationMessageFor(model => Model.Logo)
     <br />
     <input type="submit" value="Créer l'équipe" />

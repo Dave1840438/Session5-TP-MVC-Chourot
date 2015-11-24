@@ -10,9 +10,7 @@ namespace TP_Final_BD_MVC_Session5.Controllers
 {
     public class HomeController : Controller
     {
-        public const string ConnectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\Users\\Dominic\\Desktop\\Session5-TP-MVC-Chourot\\TP-Final-BD-MVC-Session5\\App_Data\\MainDB.mdf;Integrated Security=True;Connect Timeout=10";
-
-        public ActionResult Index()
+         public ActionResult Index()
         {
             return View();
         }
@@ -21,48 +19,92 @@ namespace TP_Final_BD_MVC_Session5.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
+            Models.Esports lel = new Models.Esports();
             return View();
         }
 
         [HttpPost]
-        public ActionResult About(TP_Final_BD_MVC_Session5.ViewModels.ESportViewModel esport)
+        public ActionResult About(TP_Final_BD_MVC_Session5.Models.Esports esport)
         {
-            Models.Esports BDEsport = new Models.Esports(ConnectionString);
-
-            BDEsport.DateCreation = esport.DateCreation;
-            BDEsport.Nom = esport.Nom;
-            
-
-
-            ViewBag.Message = "Inserted!";
-            WebImage logo = WebImage.GetImageFromRequest();
-            if (logo != null)
+            if (ModelState.IsValid)
             {
-                String newFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(logo.FileName);
-                String fullPath = @"Images/" + newFileName;
-                string folderPath = Server.MapPath(@"~/Images");
-                if (!Directory.Exists(folderPath))
-                    Directory.CreateDirectory(folderPath);
+                ViewBag.Message = "Inserted!";
+                WebImage logo = WebImage.GetImageFromRequest();
+                if (logo != null)
+                {
+                    String newFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(logo.FileName);
+                    String fullPath = @"Images/" + newFileName;
+                    string folderPath = Server.MapPath(@"~/Images");
+                    if (!Directory.Exists(folderPath))
+                        Directory.CreateDirectory(folderPath);
 
-                logo.Save(@"~/" + fullPath);
-                BDEsport.Logo = newFileName;
+                    logo.Save(@"~/" + fullPath);
+                    esport.Logo = newFileName;
+                }
+
+                esport.Insert();
             }
-
-            BDEsport.Insert();
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Contact(long? idToDelete)
         {
             ViewBag.Message = "Your contact page.";
 
-            Models.Esports allEsports = new Models.Esports(ConnectionString);
-            allEsports.SelectAll();
+            if (idToDelete.HasValue)
+            {
+                Models.Esports BDEsport = new Models.Esports();
+                BDEsport.DeleteRecordByID((long)idToDelete);
+            }
 
+            Models.Esports allEsports = new Models.Esports();
+            ViewBag.hasRow = allEsports.SelectAll();
 
             return View(allEsports);
+        }
+
+
+
+        [HttpGet]
+        public ActionResult UpdateESport(long? idToUpdate)
+        {
+            if (idToUpdate.HasValue)
+            {
+                Models.Esports BDEsport = new Models.Esports();
+                BDEsport.SelectByID(idToUpdate.ToString());
+                return View(BDEsport);
+            }
+            else
+            {
+                return RedirectToAction("Contact");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult UpdateESport(Models.Esports esport)
+        {
+            if (ModelState.IsValid)
+            {
+                WebImage logo = WebImage.GetImageFromRequest();
+                if (logo != null)
+                {
+                    String newFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(logo.FileName);
+                    String fullPath = @"Images/" + newFileName;
+                    string folderPath = Server.MapPath(@"~/Images");
+                    if (!Directory.Exists(folderPath))
+                        Directory.CreateDirectory(folderPath);
+
+                    logo.Save(@"~/" + fullPath);
+                    esport.Logo = newFileName;
+                }
+
+                esport.Update();
+
+                return RedirectToAction("Contact");
+            }
+            else
+                return View(esport);
         }
     }
 }

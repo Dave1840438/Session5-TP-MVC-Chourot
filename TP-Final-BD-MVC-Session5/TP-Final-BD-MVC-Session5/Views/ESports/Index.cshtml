@@ -16,9 +16,9 @@
 
         <img src="~/Images/@Model.Logo.ToString()" />
         <br />
-        @Html.ActionLink("Supprimer", "Contact", "Home", new { idToDelete = @Model.Id }, new { });
+        @Html.ActionLink("Supprimer", "Index", "ESports", new { idToDelete = @Model.Id }, new { });
         <br />
-        @Html.ActionLink("Modifier", "UpdateESport", "Home", new { idToUpdate = @Model.Id }, new { });
+        @Html.ActionLink("Modifier", "UpdateESport", "ESports", new { idToUpdate = @Model.Id }, new { });
         <br />
 
         } while (Model.Next());
