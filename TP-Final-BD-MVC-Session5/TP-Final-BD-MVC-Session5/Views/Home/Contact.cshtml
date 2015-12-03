@@ -4,27 +4,56 @@
     ViewBag.Title = "Contact";
 }
 <body style="background-color: #1f1f1f">
-    @if (ViewBag.HasRow)
-    {
-        do
-        {
-            <br />
-            @Model.Nom.ToString();
-        <br />
-        @Model.DateCreation.ToLongDateString();
-        <br />
 
-        <img src="~/Images/@Model.Logo.ToString()" />
-        <br />
-        @Html.ActionLink("Supprimer", "Contact", "Home", new { idToDelete = @Model.Id }, new { });
-        <br />
-        @Html.ActionLink("Modifier", "UpdateESport", "Home", new { idToUpdate = @Model.Id }, new { });
-        <br />
 
-        } while (Model.Next());
-    }
 
     <div style="margin-top: 70px">
+        @if (ViewBag.HasRow)
+        {
+            do
+            {
+                @*<br />
+                @Model.Nom.ToString();
+            <br />
+            @Model.DateCreation.ToLongDateString();
+            <br />
+
+            <img src="~/Images/@Model.Logo.ToString()" />
+            <br />
+            @Html.ActionLink("Supprimer", "Contact", "Home", new { idToDelete = @Model.Id }, new { });
+            <br />
+            @Html.ActionLink("Modifier", "UpdateESport", "Home", new { idToUpdate = @Model.Id }, new { });
+            <br />*@
+
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="text-center">
+                            @Model.Nom.ToString()
+                        </h4>
+                    </div>
+                    <div class="panel-body text-center" style="padding: 0px">
+                        <img src="~/Images/@Model.Logo.ToString()" style="max-width: 350px" class="img-responsive" />
+                    </div>
+                    <ul class="list-group list-group-flush text-center">
+                        <li class="list-group-item"><i class="icon-ok text-danger"></i>@Model.DateCreation.ToLongDateString()</li>
+                    </ul>
+                    <div class="panel-footer">
+                        <a class="btn btn-lg btn-block btn-default">
+                            View Teams
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            } while (Model.Next());
+        }
+    </div>
+    @*<div style="margin-top: 70px">
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -154,6 +183,6 @@
         </div>
 
 
-    </div>
+    </div>*@
 
 </body>

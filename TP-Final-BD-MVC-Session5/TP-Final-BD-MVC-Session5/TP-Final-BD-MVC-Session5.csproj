@@ -108,7 +108,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\Interface\" />
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +134,8 @@
     <Compile Include="ViewModels\TeamsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\MainDB.mdf" />
+    <Content Include="App_Data\MainDB_log.ldf" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -169,7 +170,6 @@
     <Content Include="Views\Home\UpdateESport.cshtml" />
     <Content Include="Views\ESports\Insert.cshtml" />
     <Content Include="Views\ESports\Index.cshtml" />
-    <Content Include="Views\ESports\Teams.cshtml" />
     <Content Include="Views\ESports\UpdateESport.cshtml" />
     <Content Include="Views\Teams\UpdateTeam.cshtml" />
     <Content Include="Views\Teams\Index.cshtml" />
