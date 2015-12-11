@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,6 +19,9 @@ namespace TP_Final_BD_MVC_Session5
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            String dbPath = Path.Combine(HttpContext.Current.Server.MapPath(@"App_Data"), "MainDB.mdf");
+            TP_Final_BD_MVC_Session5.Constants.ConnectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename='" + dbPath +  "';Integrated Security=True;Connect Timeout=10";  
         }
     }
 }
