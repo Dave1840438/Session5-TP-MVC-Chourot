@@ -11,8 +11,8 @@
 
         @using (Html.BeginForm("Insert", "Joueurs", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-            <div class="span3 well col-lg-4 col-lg-offset-4">
-                <legend>Ajouter un Esport</legend>
+            <div class="span3 well col-lg-6 col-lg-offset-3">
+                <legend>Ajouter un Joueur</legend>
                 @Html.LabelFor(model => Model.NomComplet)
                 @Html.TextBoxFor(model => Model.NomComplet)
                 @Html.ValidationMessageFor(model => Model.NomComplet)

@@ -9,7 +9,7 @@
     <div style="margin-top: 70px">
         @using (Html.BeginForm("Insert", "Teams", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-            <div class="span3 well col-lg-4 col-lg-offset-4">
+            <div class="span3 well col-lg-6 col-lg-offset-3">
                 <legend>Ajouter un Equipe</legend>
                 @Html.LabelFor(model => Model.NomEquipe)
                 @Html.TextBoxFor(model => Model.NomEquipe)
@@ -37,17 +37,17 @@
                 @Html.ValidationMessageFor(model => Model.IdSport)
                 <br />
 
-                @Html.LabelFor(model => Model.Classement);
-                @Html.TextBoxFor(model => Model.Classement, new { type = "number", min = "1", max = "9999" });
+                @Html.LabelFor(model => Model.Classement)
+                @Html.TextBoxFor(model => Model.Classement, new { type = "number", min = "1", max = "9999" })
                 @Html.ValidationMessageFor(model => Model.Classement)
                 <br />
 
-                @Html.LabelFor(model => Model.LogoEquipe);
+                @Html.LabelFor(model => Model.LogoEquipe)
                 @Html.TextBoxFor(model => Model.LogoEquipe, new { type = "file", accept = "image/png" })
                 @Html.ValidationMessageFor(model => Model.LogoEquipe)
                 <br />
 
-                <input type="submit" value="Créer l'équipe" />
+                <input type="submit" value="Créer l'équipe" class="btn btn-lg btn-block btn-default" />
             </div>
         }
     </div>
