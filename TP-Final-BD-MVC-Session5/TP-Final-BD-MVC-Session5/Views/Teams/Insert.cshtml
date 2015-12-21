@@ -10,9 +10,9 @@
         @using (Html.BeginForm("Insert", "Teams", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <div class="span3 well col-lg-4 col-lg-offset-4">
-                <legend>Ajouter un Esport</legend>
-                @Html.LabelFor(model => Model.NomEquipe);
-                @Html.TextBoxFor(model => Model.NomEquipe);
+                <legend>Ajouter un Equipe</legend>
+                @Html.LabelFor(model => Model.NomEquipe)
+                @Html.TextBoxFor(model => Model.NomEquipe)
                 @Html.ValidationMessageFor(model => Model.NomEquipe)
                 <br />
                 @Html.LabelFor(model => Model.IdSport);

@@ -10,74 +10,75 @@
 @using (Html.BeginForm("UpdateTeam", "Teams", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
+    <div class="span3 well col-lg-4 col-lg-offset-4">
+        <div class="form-horizontal">
+            <h4>ESportViewModel</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.LogoEquipe)
 
-    <div class="form-horizontal">
-        <h4>ESportViewModel</h4>
-        <hr />
-        @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.Id)
-        @Html.HiddenFor(model => model.LogoEquipe)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NomEquipe, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.NomEquipe)
-                @Html.ValidationMessageFor(model => model.NomEquipe)
+            <div class="form-group">
+                @Html.LabelFor(model => model.NomEquipe, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.NomEquipe)
+                    @Html.ValidationMessageFor(model => model.NomEquipe)
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => Model.IdSport);
+            <div class="form-group">
+                @Html.LabelFor(model => Model.IdSport);
 
-            <div class="col-md-10">
-                <select name="IdSport">
+                <div class="col-md-10">
+                    <select name="IdSport">
 
-                    @{
-                    TP_Final_BD_MVC_Session5.Models.Esports allEsports = new TP_Final_BD_MVC_Session5.Models.Esports();
+                        @{
+    TP_Final_BD_MVC_Session5.Models.Esports allEsports = new TP_Final_BD_MVC_Session5.Models.Esports();
 
-                    if (allEsports.SelectAll())
-                    {
-                         do
-                         {
-                            <option value="@allEsports.Id" @(allEsports.Id == Model.IdSport ? "selected" : "")>@allEsports.Nom</option>
-                         } while (allEsports.Next());
-                    }
+    if (allEsports.SelectAll())
+    {
+        do
+        {
+            <option value="@allEsports.Id" @(allEsports.Id == Model.IdSport ? "selected" : "")>@allEsports.Nom</option>
+        } while (allEsports.Next());
+    }
 
-                    }
-                </select>
+                        }
+                    </select>
 
-                @Html.ValidationMessageFor(model => Model.IdSport)
+                    @Html.ValidationMessageFor(model => Model.IdSport)
+                </div>
             </div>
-        </div>
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Classement, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Classement)
-                @Html.ValidationMessageFor(model => model.Classement)
+            <div class="form-group">
+                @Html.LabelFor(model => model.Classement, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Classement)
+                    @Html.ValidationMessageFor(model => model.Classement)
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.LogoEquipe, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input name="NouveauLogo" type="file" accept="image/png"/>
+            <div class="form-group">
+                @Html.LabelFor(model => model.LogoEquipe, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input name="NouveauLogo" type="file" accept="image/png" />
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
