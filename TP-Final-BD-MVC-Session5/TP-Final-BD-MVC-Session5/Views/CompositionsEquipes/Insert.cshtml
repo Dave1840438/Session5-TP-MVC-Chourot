@@ -9,6 +9,7 @@
 
         @using (Html.BeginForm("Insert", "CompositionsEquipes", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
+
             <div class="span3 well col-lg-6 col-lg-offset-3">
                 @Html.LabelFor(model => Model.IdTeam)
 
@@ -62,7 +63,7 @@
                 @Html.ValidationMessageFor(model => Model.Score)
                 <br />
 
-                <input type="submit" value="Créer l'équipe" />
+                <input type="submit" value="Créer le joueur" />
             </div>
         }
 
