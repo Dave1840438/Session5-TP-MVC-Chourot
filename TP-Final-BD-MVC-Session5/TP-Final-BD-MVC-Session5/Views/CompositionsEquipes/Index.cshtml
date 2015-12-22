@@ -3,163 +3,81 @@
 @{
     ViewBag.Title = "Contact";
 }
-<body style="background-color: #1f1f1f">
-    @if (ViewBag.HasRow)
-    {
-        do
-        {
-        <br />
-        @Model.NomComplet.ToString();<br />
-        <img src="~/Images/@Model.Photo.ToString()" />
-        <br />
-        @Model.NomEquipe.ToString();<br />
-        <img src="~/Images/@Model.LogoEquipe.ToString()" />
-        <br />
-        @Model.Nom.ToString();<br /> //Nom du esport
-        <br />
-        <img src="~/Images/@Model.Logo.ToString()" />
-        <br />
-        @Model.Score.ToString();
-        <br />
-        @Html.ActionLink("Supprimer", "Index", "CompositionsEquipes", new { idToDelete = @Model.Id }, new { });
-        <br />
-        @Html.ActionLink("Modifier", "UpdateCompositionsEquipes", "CompositionsEquipes", new { idToUpdate = @Model.Id }, new { });
-        <br />
-
-        } while (Model.Next());
-       
-    }
+<body style="background-color: #fff">
 
     <div style="margin-top: 70px">
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="text-center">
-                        League Of Legend
-                    </h4>
+
+        <div class="col-lg-12" style="margin-bottom: 20px">
+            <form action="" method="get">
+                <div class="col-lg-4" style="margin-bottom: 20px">
+
+
+                    <fieldset>
+                        <select id="MovieType" name="Trier" class=" form-control">
+
+                            <option value="NomComplet">Nom</option>
+
+                            <option value="Score">Score</option>
+
+                        </select>
+
+                    </fieldset>
+
                 </div>
-                <div class="panel-body text-center" style="padding: 0px">
-                    <img src="~/Photo/Lol.png" style="max-width: 350px" class="img-responsive" />
-                </div>
-                <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                </ul>
-                <div class="panel-footer">
-                    <a class="btn btn-lg btn-block btn-default">
-                        View Teams
-                    </a>
-                </div>
-            </div>
+                <input type="submit" class="btn btn-md btn-default" name="Trier" value="Trier" />
+                @Html.ActionLink("Ajouter un joueur", "Insert", "ComposittionEquipes", new { @class = "btn btn-md btn-default" })
+            </form>
         </div>
 
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+        @if (ViewBag.HasRow)
+        {
+
+          
+                <div class="row custyle">
                     <h4 class="text-center">
-                        League Of Legend
+                        Table de joueur
                     </h4>
-                </div>
-                <div class="panel-body text-center" style="padding: 0px">
-                    <img src="~/Photo/csgo.png" style="max-width: 350px" class="img-responsive" />
-                </div>
-                <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                </ul>
-                <div class="panel-footer">
-                    <a class="btn btn-lg btn-block btn-default">
-                        View Teams
-                    </a>
-                </div>
-            </div>
-        </div>
+                    <table class="table table-striped custab">
+                        <thead>
 
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="text-center">
-                        HearthStone
-                    </h4>
-                </div>
-                <div class="panel-body text-center" style="padding: 0px">
-                    <img src="~/Photo/hearth.png" style="max-width: 350px" class="img-responsive" />
-                </div>
-                <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                </ul>
-                <div class="panel-footer">
-                    <a class="btn btn-lg btn-block btn-default">
-                        View Teams
-                    </a>
-                </div>
-            </div>
-        </div>
+                            <tr>
+                                <th>Image</th>
+                                <th>Nom</th>
+                                <th>NomEquipe</th>
+                                <th>LogoEquipe</th>
+                                <th>Nom Sport</th>
+                                <th>Logo Sport</th>
+                                <th>Score</th>
+                                <th>Supprimer</th>
+                                <th>Modifier</th>
+                            </tr>
+                        </thead>
 
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="text-center">
-                        Dota 2
-                    </h4>
+                        @do
+                        {
+                            <tr>
+                                <td>
+                                    <img src="~/Images/@Model.Photo.ToString()" style=" height: 150px; width: 150px"/>
+                                </td>
+                                <td>@Model.NomComplet.ToString()</td>
+                                <td>@Model.NomEquipe.ToString()</td>
+                                <td>
+                                    
+                                    <img src="~/Images/@Model.LogoEquipe.ToString()" style=" height: 150px; width: 150px" />
+                                </td>
+                                <td>@Model.Nom.ToString()</td>
+                                <td>
+                                    <img src="~/Images/@Model.Logo.ToString()" style=" height: 150px; width: 150px" />
+                                </td>
+                                <td>@Model.Score.ToString()</td>
+                                <td>@Html.ActionLink("Supprimer", "Index", "CompositionsEquipes", new { idToDelete = @Model.Id }, new { })</td>
+                                <td>@Html.ActionLink("Modifier", "UpdateCompositionsEquipes", "CompositionsEquipes", new { idToUpdate = @Model.Id }, new { })</td>
+                            </tr>
+                        } while (Model.Next());
+                    </table>
                 </div>
-                <div class="panel-body text-center" style="padding: 0px">
-                    <img src="~/Photo/Dota.png" style="max-width: 350px" class="img-responsive" />
-                </div>
-                <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                </ul>
-                <div class="panel-footer">
-                    <a class="btn btn-lg btn-block btn-default">
-                        View Teams
-                    </a>
-                </div>
-            </div>
-        </div>
 
-
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="text-center">
-                        Heroes of the Storm
-                    </h4>
-                </div>
-                <div class="panel-body text-center" style="padding: 0px">
-                    <img src="~/Photo/Heroes.png" style="max-width: 350px" class="img-responsive" />
-                </div>
-                <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                </ul>
-                <div class="panel-footer">
-                    <a class="btn btn-lg btn-block btn-default">
-                        View Teams
-                    </a>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="text-center">
-                        Overwatch
-                    </h4>
-                </div>
-                <div class="panel-body text-center" style="padding: 0px">
-                    <img src="~/Photo/Over.png" style="max-width: 350px" class="img-responsive" />
-                </div>
-                <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                </ul>
-                <div class="panel-footer">
-                    <a class="btn btn-lg btn-block btn-default">
-                        View Teams
-                    </a>
-                </div>
-            </div>
-        </div>
-
-
+        }
     </div>
 
 </body>

@@ -3,67 +3,68 @@
 @{
     ViewBag.Title = "About";
 }
+<body style="background-color: #fff">
 
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+    <div style="margin-top: 70px">
 
-@using (Html.BeginForm("Insert", "CompositionsEquipes", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-   
-    @Html.LabelFor(model => Model.IdTeam);
-
-    <select name="IdTeam">
-
-    @{
-    TP_Final_BD_MVC_Session5.Models.Teams allTeams = new TP_Final_BD_MVC_Session5.Models.Teams();
-
-    if (allTeams.SelectAll())
-    {
-        do
+        @using (Html.BeginForm("Insert", "CompositionsEquipes", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-            <option value="@allTeams.Id">@allTeams.Id : @allTeams.NomEquipe</option>
-        } while (allTeams.Next());
-     }
+            <div class="span3 well col-lg-6 col-lg-offset-3">
+                @Html.LabelFor(model => Model.IdTeam)
 
-     }
+                <select name="IdTeam">
 
-    </select>
+                    @{
+            TP_Final_BD_MVC_Session5.Models.Teams allTeams = new TP_Final_BD_MVC_Session5.Models.Teams();
 
-   
-    @Html.ValidationMessageFor(model => Model.IdTeam)
-    <br />
-    
-    @Html.LabelFor(model => Model.IdJoueur);
+            if (allTeams.SelectAll())
+            {
+                do
+                {
+                    <option value="@allTeams.Id">@allTeams.Id : @allTeams.NomEquipe</option>
+                } while (allTeams.Next());
+            }
 
-    <select name="IdJoueur">
+                    }
 
-    @{
-    TP_Final_BD_MVC_Session5.Models.Joueurs allPlayers = new TP_Final_BD_MVC_Session5.Models.Joueurs();
-
-    if (allPlayers.SelectAll())
-    {
-        do
-        {
-            <option value="@allPlayers.Id">@allPlayers.Id : @allPlayers.NomComplet</option>
-        } while (allPlayers.Next());
-     }
-
-     }
-
-    </select>
-
-    @Html.ValidationMessageFor(model => Model.IdJoueur)
-    <br />
-    
-    
-    
-    @Html.LabelFor(model => Model.Score); 
-    @Html.TextBoxFor(model => Model.Score, new { type = "number" });
-    @Html.ValidationMessageFor(model => Model.Score)
-    <br />
-    
-    <input type="submit" value="Créer l'équipe" />
-}
+                </select>
 
 
-<p>Use this area to provide additional information.</p>
+                @Html.ValidationMessageFor(model => Model.IdTeam)
+                <br />
+
+                @Html.LabelFor(model => Model.IdJoueur)
+
+                <select name="IdJoueur">
+
+                    @{
+            TP_Final_BD_MVC_Session5.Models.Joueurs allPlayers = new TP_Final_BD_MVC_Session5.Models.Joueurs();
+
+            if (allPlayers.SelectAll())
+            {
+                do
+                {
+                    <option value="@allPlayers.Id">@allPlayers.Id : @allPlayers.NomComplet</option>
+                } while (allPlayers.Next());
+            }
+
+                    }
+
+                </select>
+
+                @Html.ValidationMessageFor(model => Model.IdJoueur)
+                <br />
+
+
+
+                @Html.LabelFor(model => Model.Score)
+                @Html.TextBoxFor(model => Model.Score, new { type = "number" })
+                @Html.ValidationMessageFor(model => Model.Score)
+                <br />
+
+                <input type="submit" value="Créer l'équipe" />
+            </div>
+        }
+
+    </div>
+</body>

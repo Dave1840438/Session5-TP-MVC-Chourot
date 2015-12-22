@@ -8,25 +8,7 @@
     <div style="margin-top: 70px">
 
         <div class="col-lg-12" style="margin-bottom: 20px">
-            <form action="" method="get">
-                <div class="col-lg-4" style="margin-bottom: 20px">
-
-
-                    <fieldset>
-                        <select id="MovieType" name="Trier par..." class=" form-control">
-
-                            <option value="0">Nom</option>
-
-                            <option value="1">Date Naissance</option>
-
-                        </select>
-
-                    </fieldset>
-                    
-                </div>
-                <input type="submit" class="btn btn-md btn-default" name="Trier" value="Trier" />
                 @Html.ActionLink("Ajouter un joueur", "Insert", "Joueurs", new { @class = "btn btn-md btn-default" })
-            </form>
         </div>
 
 
@@ -36,7 +18,7 @@
             <div class="container">
                 <div class="row col-md-12 custyle">
                     <h4 class="text-center">
-                        Nom Equipe
+                       Table de tout les joueurs
                     </h4>
                     <table class="table table-striped custab">
                         <thead>

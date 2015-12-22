@@ -37,7 +37,7 @@
                     <li class="list-group-item"><i class="icon-ok text-danger"></i>@Html.ActionLink("Modifier", "UpdateTeam", "Teams", new { idToUpdate = @Model.Id }, new { })</li>
                 </ul>
                 <div class="panel-footer">
-                    @Html.ActionLink("Players", "Index", "Joueurs", new { idTeam = @Model.Id }, new { @class = "btn btn-lg btn-block btn-default" })
+                    @Html.ActionLink("Players", "Index", "CompositionsEquipes", new { idTeam = @Model.Id }, new { @class = "btn btn-lg btn-block btn-default" })
                 </div>
             </div>
         </div>
