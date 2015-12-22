@@ -11,16 +11,15 @@
 {
     @Html.AntiForgeryToken()
     <div class="span3 well col-lg-6 col-lg-offset-3" style="margin-top: 30px">
-        <div class="form-horizontal">
-            <h4>ESportViewModel</h4>
+        <div class="form-horizontal" align="center">
             <hr />
             @Html.ValidationSummary(true)
             @Html.HiddenFor(model => model.Id)
             @Html.HiddenFor(model => model.LogoEquipe)
 
             <div class="form-group">
-                @Html.LabelFor(model => model.NomEquipe, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.NomEquipe, new { @class = "control-label" })
+                <div>
                     @Html.TextBoxFor(model => model.NomEquipe)
                     @Html.ValidationMessageFor(model => model.NomEquipe)
                 </div>
@@ -29,7 +28,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => Model.IdSport)
 
-                <div class="col-md-10">
+                <div>
                     <select name="IdSport">
 
                         @{
@@ -52,22 +51,22 @@
 
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Classement, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.Classement, new { @class = "control-label" })
+                <div>
                     @Html.TextBoxFor(model => model.Classement)
                     @Html.ValidationMessageFor(model => model.Classement)
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.LogoEquipe, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                @Html.LabelFor(model => model.LogoEquipe, new { @class = "control-label" })
+                <div>
                     <input name="NouveauLogo" type="file" accept="image/png" />
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
+                <div>
                     <input type="submit" value="Save" class="btn btn-default" />
                 </div>
             </div>

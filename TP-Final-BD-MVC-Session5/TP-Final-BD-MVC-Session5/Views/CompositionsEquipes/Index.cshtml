@@ -70,8 +70,8 @@
                                     <img src="~/Images/@Model.Logo.ToString()" style=" height: 150px; width: 150px" />
                                 </td>
                                 <td>@Model.Score.ToString()</td>
-                                <td>@Html.ActionLink("Supprimer", "Index", "CompositionsEquipes", new { idToDelete = @Model.Id }, new { })</td>
-                                <td>@Html.ActionLink("Modifier", "UpdateCompositionsEquipes", "CompositionsEquipes", new { idToUpdate = @Model.Id }, new { })</td>
+                                <td>@Html.ActionLink("Supprimer", "Index", "CompositionsEquipes", new { idToDelete = @Model.Id }, new { @class = "btn btn-md btn-danger" })</td>
+                                <td>@Html.ActionLink("Modifier", "UpdateCompositionsEquipes", "CompositionsEquipes", new { idToUpdate = @Model.Id }, new { @class="btn btn-md btn-warning"})</td>
                             </tr>
                         } while (Model.Next());
                     </table>

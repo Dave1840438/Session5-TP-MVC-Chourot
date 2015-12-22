@@ -1,31 +1,28 @@
 ﻿@model TP_Final_BD_MVC_Session5.Models.CompositionsEquipes
 
-@{
-    ViewBag.Title = "UpdateESport";
-}
 
-<h2>UpdateESport</h2>
+
+
 
 
 @using (Html.BeginForm("UpdateCompositionsEquipes", "CompositionsEquipes", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
+    <div class="span3 well col-lg-6 col-lg-offset-3" style="margin-top: 30px">
+        <div class="form-horizontal" align="center">
+            <hr />
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.Id)
 
-    <div class="form-horizontal">
-        <h4>ESportViewModel</h4>
-        <hr />
-        @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
-            @Html.LabelFor(model => Model.IdTeam);
+            <div class="form-group">
+                @Html.LabelFor(model => Model.IdTeam);
 
 
-            <div class="col-md-10">
+                <div >
 
-                <select name="IdTeam">
+                    <select name="IdTeam">
 
-                    @{
+                        @{
     TP_Final_BD_MVC_Session5.Models.Teams allTeams = new TP_Final_BD_MVC_Session5.Models.Teams();
 
     if (allTeams.SelectAll())
@@ -36,29 +33,27 @@
         } while (allTeams.Next());
     }
 
-}
+                        }
 
-                </select>
+                    </select>
 
-                @Html.ValidationMessageFor(model => Model.IdTeam)
-                <br />
+                    @Html.ValidationMessageFor(model => Model.IdTeam)
+                    <br />
 
+                </div>
+            </div>
+
+            <div class="form-group">
                 @Html.LabelFor(model => Model.IdJoueur);
 
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => Model.IdJoueur);
 
 
+                <div >
 
-            <div class="col-md-10">
 
+                    <select name="IdJoueur">
 
-                <select name="IdJoueur">
-
-                    @{
+                        @{
     TP_Final_BD_MVC_Session5.Models.Joueurs allPlayers = new TP_Final_BD_MVC_Session5.Models.Joueurs();
 
     if (allPlayers.SelectAll())
@@ -69,36 +64,38 @@
         } while (allPlayers.Next());
     }
 
-}
+                        }
 
-                </select>
+                    </select>
 
-                @Html.ValidationMessageFor(model => Model.IdJoueur)
+                    @Html.ValidationMessageFor(model => Model.IdJoueur)
 
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Score, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Score, new { type = "number" })
-                @Html.ValidationMessageFor(model => model.Score)
+            <div class="form-group">
+                @Html.LabelFor(model => model.Score, new { @class = "control-label" })
+                <div >
+                    @Html.TextBoxFor(model => model.Score, new { type = "number" })
+                    @Html.ValidationMessageFor(model => model.Score)
+                </div>
             </div>
-        </div>
 
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+            <div>
+                @Html.ActionLink("Back to List", "Index")
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+       
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }

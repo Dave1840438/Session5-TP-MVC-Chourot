@@ -42,8 +42,8 @@
                                     </td>
                                     <td>@Model.NomComplet.ToString()</td>
                                     <td>@Model.DateNaissance.ToLongDateString()</td>
-                                    <td>@Html.ActionLink("Supprimer", "Index", "Joueurs", new { idToDelete = @Model.Id }, new { })</td>
-                                    <td>@Html.ActionLink("Modifier", "UpdateJoueur", "Joueurs", new { idToUpdate = @Model.Id }, new { })</td>
+                                    <td>@Html.ActionLink("Supprimer", "Index", "Joueurs", new { idToDelete = @Model.Id }, new { @class = "btn btn-md btn-danger" })</td>
+                                    <td>@Html.ActionLink("Modifier", "UpdateJoueur", "Joueurs", new { idToUpdate = @Model.Id }, new { @class = "btn btn-md btn-warning" })</td>
                                 </tr>
 
                         }while (Model.Next());

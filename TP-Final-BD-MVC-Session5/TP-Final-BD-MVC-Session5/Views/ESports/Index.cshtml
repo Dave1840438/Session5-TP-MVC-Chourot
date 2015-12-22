@@ -32,10 +32,10 @@
                                 <li class="list-group-item"><i class="icon-ok text-danger"></i>@Model.DateCreation.ToLongDateString()</li>
                             </ul>
                             <ul class="list-group list-group-flush text-center">
-                                <li class="list-group-item"><i class="icon-ok text-danger"></i>@Html.ActionLink("Supprimer", "Index", "ESports", new { idToDelete = @Model.Id }, new { })</li>
+                                <li class="list-group-item"><i class="icon-ok text-danger"></i>@Html.ActionLink("Supprimer", "Index", "ESports", new { idToDelete = @Model.Id }, new { @class = "btn btn-md btn-danger" })</li>
                             </ul>
                             <ul class="list-group list-group-flush text-center">
-                                <li class="list-group-item"><i class="icon-ok text-danger"></i>@Html.ActionLink("Modifier", "UpdateESport", "ESports", new { idToUpdate = @Model.Id }, new { })</li>
+                                <li class="list-group-item"><i class="icon-ok text-danger"></i>@Html.ActionLink("Modifier", "UpdateESport", "ESports", new { idToUpdate = @Model.Id }, new { @class = "btn btn-md btn-warning" })</li>
                             </ul>
                             <div class="panel-footer">
 
