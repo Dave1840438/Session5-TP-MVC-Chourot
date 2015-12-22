@@ -47,7 +47,36 @@ namespace TP_Final_BD_MVC_Session5.ViewModels
             else
                 EndQuerySQL();
 
-            return hadRow;          
+            return hadRow;
+        }
+
+        public override bool SelectByFieldName(String FieldName, object value, String orderBy = "")
+        {
+            string sql = "SELECT " +
+                            "Teams.Id, " +
+                            "Teams.NomEquipe, " +
+                            "Teams.Classement, " +
+                            "Teams.LogoEquipe, " +
+                            "ESports.Nom, " +
+                            "ESports.DateCreation, " +
+                            "ESports.Logo " +
+                            "FROM Teams INNER JOIN ESports " +
+                            "ON Teams.IdSport = ESports.Id" +
+                            " WHERE " + FieldName + " = " + SqlExpressUtilities.SQLHelper.ConvertValueFromMemberToSQL(value);
+
+            if (orderBy != "")
+                sql += " ORDER BY " + orderBy;
+
+            QuerySQL(sql);
+
+            bool hadRow = reader.HasRows;
+
+            if (hadRow)
+                Next();
+            else
+                EndQuerySQL();
+
+            return hadRow;
         }  
 
     }

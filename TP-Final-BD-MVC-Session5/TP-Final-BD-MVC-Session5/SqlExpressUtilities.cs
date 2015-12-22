@@ -257,7 +257,7 @@ namespace SqlExpressUtilities
             return hadRow;
         }
 
-        public bool SelectByFieldName(String FieldName, object value, String orderBy = "")
+        public virtual bool SelectByFieldName(String FieldName, object value, String orderBy = "")
         {
             string SQL = "SELECT * FROM " + SQLTableName + " WHERE " + FieldName + " = " + SQLHelper.ConvertValueFromMemberToSQL(value);
 

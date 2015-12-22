@@ -13,7 +13,7 @@
 
 
                     <fieldset>
-                        <select id="MovieType" name="Trier" class=" form-control">
+                        <select id="sortChoices" name="fieldName" class=" form-control">
 
                             <option value="NomComplet">Nom</option>
 
@@ -24,6 +24,7 @@
                     </fieldset>
 
                 </div>
+                <input type="hidden" name="idTeam" value="@ViewBag.idTeam" />
                 <input type="submit" class="btn btn-md btn-default" name="Trier" value="Trier" />
                 @Html.ActionLink("Ajouter un joueur", "Insert", "ComposittionEquipes", new { @class = "btn btn-md btn-default" })
             </form>
@@ -32,50 +33,50 @@
         @if (ViewBag.HasRow)
         {
 
-          
-                <div class="row custyle">
-                    <h4 class="text-center">
-                        Table de joueur
-                    </h4>
-                    <table class="table table-striped custab">
-                        <thead>
 
-                            <tr>
-                                <th>Image</th>
-                                <th>Nom</th>
-                                <th>NomEquipe</th>
-                                <th>LogoEquipe</th>
-                                <th>Nom Sport</th>
-                                <th>Logo Sport</th>
-                                <th>Score</th>
-                                <th>Supprimer</th>
-                                <th>Modifier</th>
-                            </tr>
-                        </thead>
+            <div class="row custyle">
+                <h4 class="text-center">
+                    Table de joueur - Triée par @ViewBag.FieldName
+                </h4>
+                <table class="table table-striped custab">
+                    <thead>
 
-                        @do
-                        {
-                            <tr>
-                                <td>
-                                    <img src="~/Images/@Model.Photo.ToString()" style=" height: 150px; width: 150px"/>
-                                </td>
-                                <td>@Model.NomComplet.ToString()</td>
-                                <td>@Model.NomEquipe.ToString()</td>
-                                <td>
-                                    
-                                    <img src="~/Images/@Model.LogoEquipe.ToString()" style=" height: 150px; width: 150px" />
-                                </td>
-                                <td>@Model.Nom.ToString()</td>
-                                <td>
-                                    <img src="~/Images/@Model.Logo.ToString()" style=" height: 150px; width: 150px" />
-                                </td>
-                                <td>@Model.Score.ToString()</td>
-                                <td>@Html.ActionLink("Supprimer", "Index", "CompositionsEquipes", new { idToDelete = @Model.Id }, new { @class = "btn btn-md btn-danger" })</td>
-                                <td>@Html.ActionLink("Modifier", "UpdateCompositionsEquipes", "CompositionsEquipes", new { idToUpdate = @Model.Id }, new { @class="btn btn-md btn-warning"})</td>
-                            </tr>
-                        } while (Model.Next());
-                    </table>
-                </div>
+                        <tr>
+                            <th>Image</th>
+                            <th>Nom</th>
+                            <th>NomEquipe</th>
+                            <th>LogoEquipe</th>
+                            <th>Nom Sport</th>
+                            <th>Logo Sport</th>
+                            <th>Score</th>
+                            <th>Supprimer</th>
+                            <th>Modifier</th>
+                        </tr>
+                    </thead>
+
+                    @do
+                    {
+                        <tr>
+                            <td>
+                                <img src="~/Images/@Model.Photo.ToString()" style=" height: 150px; width: 150px" />
+                            </td>
+                            <td>@Model.NomComplet.ToString()</td>
+                            <td>@Model.NomEquipe.ToString()</td>
+                            <td>
+
+                                <img src="~/Images/@Model.LogoEquipe.ToString()" style=" height: 150px; width: 150px" />
+                            </td>
+                            <td>@Model.Nom.ToString()</td>
+                            <td>
+                                <img src="~/Images/@Model.Logo.ToString()" style=" height: 150px; width: 150px" />
+                            </td>
+                            <td>@Model.Score.ToString()</td>
+                            <td>@Html.ActionLink("Supprimer", "Index", "CompositionsEquipes", new { idToDelete = @Model.Id }, new { @class = "btn btn-md btn-danger" })</td>
+                            <td>@Html.ActionLink("Modifier", "UpdateCompositionsEquipes", "CompositionsEquipes", new { idToUpdate = @Model.Id }, new { @class = "btn btn-md btn-warning" })</td>
+                        </tr>
+                    } while (Model.Next());
+                </table>
+            </div>
 
         }
     </div>

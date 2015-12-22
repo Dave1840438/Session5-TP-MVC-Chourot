@@ -11,7 +11,7 @@ namespace TP_Final_BD_MVC_Session5.Controllers
     {
         //
         // GET: /Teams/
-        public ActionResult Index(long? idToDelete) //List
+        public ActionResult Index(long? idToDelete, long? idSports) //List
         {
             ViewBag.Message = "Your contact page.";
 
@@ -25,7 +25,10 @@ namespace TP_Final_BD_MVC_Session5.Controllers
             }
 
             ViewModels.TeamsViewModel allTeams = new ViewModels.TeamsViewModel();
-            ViewBag.hasRow = allTeams.SelectAll();
+            if (idSports.HasValue)
+                ViewBag.hasRow = allTeams.SelectByFieldName("IdSport", idSports);
+            else
+                ViewBag.hasRow = allTeams.SelectAll();
 
             return View(allTeams);
         }

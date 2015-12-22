@@ -11,8 +11,11 @@ namespace TP_Final_BD_MVC_Session5.Controllers
     {
         //
         // GET: /CompositionsEquipes/
-        public ActionResult Index(long? idToDelete) //List
+        public ActionResult Index(long? idToDelete, long? idTeam, string fieldName = "Score") //List
         {
+            ViewBag.idTeam = idTeam;
+            ViewBag.FieldName = fieldName;
+
             ViewBag.Message = "Your contact page.";
 
             if (idToDelete.HasValue)
@@ -22,7 +25,12 @@ namespace TP_Final_BD_MVC_Session5.Controllers
             }
 
             ViewModels.CompositionsEquipesViewModel allCompo = new ViewModels.CompositionsEquipesViewModel();
-            ViewBag.hasRow = allCompo.SelectAll();
+            if (idTeam.HasValue && idTeam != -1)
+            {
+                ViewBag.hasRow = allCompo.SelectByFieldName("IdTeam", idTeam, fieldName);
+            }
+            else
+                ViewBag.hasRow = allCompo.SelectAll(fieldName);
 
             return View(allCompo);
         }
@@ -72,5 +80,5 @@ namespace TP_Final_BD_MVC_Session5.Controllers
             else
                 return View(compo);
         }
-	}
+    }
 }

@@ -17,7 +17,7 @@ namespace TP_Final_BD_MVC_Session5
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "ESports", action = "Index", id = UrlParameter.Optional }
             );
 
             String dbPath = Path.Combine(HttpContext.Current.Server.MapPath(@"App_Data"), "MainDB.mdf");
